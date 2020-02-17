@@ -6,7 +6,9 @@
     width: auto;
     align-items: center;
     padding-left: 10px;
+    padding-right: 20px;
 }
+
 
 .NavigationItem a {
     color: black;
@@ -20,8 +22,6 @@
     border: 0.5px solid rgba(14,19,24,.2);
     border-radius: 4px;
     cursor: pointer;
-
-
 }
 
 .NavigationItem a:hover,
