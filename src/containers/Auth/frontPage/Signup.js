@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './Login.css';
+import classes from './Signup.css';
 import { NavLink } from 'react-router-dom';
 
 class Login extends Component {
@@ -7,11 +7,14 @@ class Login extends Component {
     return (
 
         <div className={classes.Container}>
-          <div className={classes.LoginForm}>
-            <h3>Log in to your account</h3>
+          <div className={classes.SignupForm}>
+            <h3>What's your story?</h3>
+            <p>
+                Create an account and tell everyone for free.
+            </p>
             <button className={classes.GoogleButton}>
               <span>
-                <span className={classes.GoogleLoginLogo}>
+                <span className={classes.GoogleSignupLogo}>
                   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                   <g fill="none" fill-rule="evenodd">
                     <path d="M20.64 12.2c0-.63-.06-1.25-.16-1.84H12v3.49h4.84a4.14 4.14 0 0 1-1.8 2.71v2.26h2.92a8.78 8.78 0 0 0 2.68-6.62z" fill="#4285F4"></path>
@@ -21,33 +24,26 @@ class Login extends Component {
                   </g>
                   </svg>
                 </span>
-                <span>Log in with Google</span>
+                <span>Signup with Google</span>
               </span>
               
             </button>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="344" height="30" viewBox="0 0 344 14">
-              <g id="Group_11" data-name="Group 11" class={classes.cls1} transform="translate(-212.5 -421)">
-                <line id="Line_1" data-name="Line 1" class={classes.cls2} x2="344" transform="translate(212.5 428.5)"/>
-                <rect id="Rectangle_5" data-name="Rectangle 5" class={classes.cls3} width="18" height="13" transform="translate(377 422)"/>
-                <text id="OR" class={classes.cls4} transform="translate(380 431)"><tspan x="0" y="0">OR</tspan></text>
-              </g>
-            </svg>
-
-            <input type="email" className="loginEmail" placeholder="Email"/>
-
-            <input type="password" className="loginPassword" placeholder="Password"/>
-
-            <button className={classes.LoginFormButton}>
+            <button className={classes.EmailButton}>
               <span>
-                Log in
+                <span className={classes.GoogleSignupLogo}>
+                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                  </svg>
+                </span>
+                <span>Signup with Email</span>
               </span>
+              
             </button>
 
             <p>
-              Don't have an account?
+              Already have an account?
               <span> </span>
-              <NavLink to="/signup">Signup </NavLink>
+              <NavLink to="/login"> Login </NavLink>
             </p>
           </div>
         </div>
