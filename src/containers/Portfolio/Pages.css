@@ -1,0 +1,24 @@
+.Container {
+    background-color: transparent;
+    padding: 80px;
+    padding-top: 5px;
+    width: 80%;
+    margin: 5%;
+    font-family: SegoeUI, Segoe UI;
+    text-align: center;
+}
+
+h3 {
+    width: 100%;
+    font-size: 40px;
+    font-family: SegoeUI-Semibold, Segoe UI;
+    font-weight: 600;
+}
+
+.Link {
+    width: 5%;
+    height: 5%;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+

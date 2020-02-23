@@ -1,0 +1,37 @@
+.Container {
+    background-color: transparent;
+    padding: 80px;
+    padding-top: 5px;
+    width: 80%;
+    margin: 5%;
+    font-family: SegoeUI, Segoe UI;
+    text-align:center;
+}
+
+.CreatedStoriesContainer {
+    padding-top:10px;
+}
+
+.Link {
+    width: 5%;
+    height: 5%;
+    padding-top:0px;
+    padding-bottom: 20px;
+}
+
+h3 {
+    width: 100%;
+    font-size: 40px;
+    font-family: SegoeUI-Semibold, Segoe UI;
+    font-weight: 600;
+    padding-bottom:0px;
+}
+
+hr {
+    width: 60%;
+    height: 3px;
+    background-color: #7A8888;
+    border: 0 none;
+    margin-left: auto;
+    margin-right: auto;
+}
