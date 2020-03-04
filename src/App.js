@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
-import Login from './containers/Auth/frontPage/Login';
+import Login from './containers/Auth/Login/Login';
 import Logout from './containers/Auth/Logout';
-import Signup from './containers/Auth/frontPage/Signup';
-import firebase from 'firebase';
-import {fireB, base} from './firebase-config';
-import {Spinner, Button} from '@blueprintjs/core';
+import Signup from './containers/Auth/Signup/Signup';
+import {fireB} from './firebase-config';
+import Spinner from './components/UI/Spinner/Spinner';
+import {Button} from '@blueprintjs/core';
 import * as ROUTES from './constants/routes';
 
 class App extends Component {
@@ -18,7 +18,8 @@ class App extends Component {
       isSignedIn:false, 
       loading: true,
       currentUser:null,
-      setLoggedIn: false
+      setLoggedIn: false,
+      reloaded: false
     };
   }
 
@@ -94,7 +95,9 @@ class App extends Component {
         {this.state.isSignedIn ? (
           <div>Signed In!
             <Button onClick={()=>fireB.auth().signOut()}>Sign Out</Button>
+            <h1>Welcome {fireB.auth().currentUser.displayName}</h1>
           </div>
+
           
         ) : (
           <Layout>

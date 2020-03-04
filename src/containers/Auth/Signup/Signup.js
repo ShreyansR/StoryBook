@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import classes from './Signup.css';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 
 import { Redirect } from 'react-router-dom'
-import { Toaster, Intent } from '@blueprintjs/core'
 import {fireB, googleProvider } from '../../../firebase-config'
 
 class Signup extends Component {
@@ -14,25 +12,37 @@ class Signup extends Component {
         this.signupWithGoogle = this.signupWithGoogle.bind(this);
         this.signupWithEmailPassword = this.signupWithEmailPassword.bind(this);
         this.state = {
+            name: null,
             redirect: false
         }
     }
 
-    signupWithGoogle() {
+    componentWillMount(){
+      this.authListener();
+    }
 
+    signupWithGoogle() {
+      fireB.auth().signInWithPopup(googleProvider)
+      .then((result, error) => {
+        if (error) {
+          alert("Incorrect Credentials");
+        }
+        else {
+          this.setState({redirect: true});
+        }
+      })
     }
 
     signupWithEmailPassword(event) {
         event.preventDefault();
-        console.log("authed with email");
-        console.table([{
-            email: this.emailInput.value,
-            password: this.passwordInput.value
-        }])
+        this.setState({
+          name: this.nameInput.value
+        })
+
         fireB.auth().createUserWithEmailAndPassword(this.emailInput.value, this.passwordInput.value)
             .then((result, error) => {
                 if (error) {
-                    this.toaster.show({intent: Intent.DANGER, message: "Unable to sign up with Email"});
+                    alert("Unable to sign up!");
                 }
                 else {
                     this.setState({redirect: true});
@@ -40,11 +50,23 @@ class Signup extends Component {
             })
     }
 
+    authListener() {
+      fireB.auth().onAuthStateChanged((user) => {
+        if (user) {
+          user.updateProfile({
+            displayName: this.state.name
+          }).then(()=>{
+            console.log(user.displayName);
+          })
+        }
+      });
+    }
+
 
   render() {
 
     if(this.state.redirect === true) {
-        return <Redirect to='/login' />
+        return <Redirect to='/' />
     }
 
     return (
@@ -55,7 +77,7 @@ class Signup extends Component {
             <p>
                 Create an account and tell everyone for free.
             </p>
-            <button onClick={() => {}}className={classes.GoogleButton}>
+            <button onClick={() => {this.signupWithGoogle()}}className={classes.GoogleButton}>
               <span>
                 <span className={classes.GoogleSignupLogo}>
                   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -81,6 +103,8 @@ class Signup extends Component {
             </svg>
 
             <form onSubmit={(event) => {this.signupWithEmailPassword(event)}} ref={(form) => {this.signupForm = form}}>
+
+                <input ref={(input) => {this.nameInput = input}} type="text" className="signupName"  placeholder="Full Name"/>
                 <input ref={(input) => {this.emailInput = input}} type="email" className="signupEmail"  placeholder="Email"/>
 
                 <input ref={(input) => {this.passwordInput = input}} type="password" className="signupPassword" placeholder="Password"/>

@@ -3,7 +3,6 @@ import Ax from '../Ax/Ax';
 import classes from './Layout.css';
 import Navbar from '../../components/Navigation/Navbar/Navbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
-//import Login from '../../containers/Auth/frontPage/Login';
 
 class Layout extends Component {
     state = {

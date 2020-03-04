@@ -3,7 +3,7 @@ import classes from './Login.css';
 import { NavLink } from 'react-router-dom';
 
 import { Redirect } from 'react-router-dom'
-import { Toaster, Intent } from '@blueprintjs/core'
+//import { Toaster, Intent } from '@blueprintjs/core'
 import {fireB, googleProvider } from '../../../firebase-config'
 
 
@@ -37,6 +37,7 @@ class Login extends Component {
       email: this.emailInput.value,
       password: this.passwordInput.value
     }])
+    fireB.auth().signInWithEmailAndPassword(this.emailInput.value, this.passwordInput.value);
   }
 
   render() {
