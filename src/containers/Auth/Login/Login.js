@@ -32,11 +32,6 @@ class Login extends Component {
 
   authWithEmailPassword(event) {
     event.preventDefault();
-    console.log("authed with email");
-    console.table([{
-      email: this.emailInput.value,
-      password: this.passwordInput.value
-    }])
     fireB.auth().signInWithEmailAndPassword(this.emailInput.value, this.passwordInput.value);
   }
 

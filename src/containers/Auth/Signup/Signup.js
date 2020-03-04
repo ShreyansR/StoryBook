@@ -17,10 +17,6 @@ class Signup extends Component {
         }
     }
 
-    componentWillMount(){
-      this.authListener();
-    }
-
     signupWithGoogle() {
       fireB.auth().signInWithPopup(googleProvider)
       .then((result, error) => {
@@ -35,33 +31,21 @@ class Signup extends Component {
 
     signupWithEmailPassword(event) {
         event.preventDefault();
-        this.setState({
-          name: this.nameInput.value
-        })
 
         fireB.auth().createUserWithEmailAndPassword(this.emailInput.value, this.passwordInput.value)
-            .then((result, error) => {
-                if (error) {
-                    alert("Unable to sign up!");
+            .then((user) => {
+                if (user) {
+                    user.updateProfile({
+                      displayName: this.nameInput.value
+                    }).then (() => {
+                      console.log(user.displayName);
+                    })
                 }
                 else {
                     this.setState({redirect: true});
                 }
-            })
+            });
     }
-
-    authListener() {
-      fireB.auth().onAuthStateChanged((user) => {
-        if (user) {
-          user.updateProfile({
-            displayName: this.state.name
-          }).then(()=>{
-            console.log(user.displayName);
-          })
-        }
-      });
-    }
-
 
   render() {
 

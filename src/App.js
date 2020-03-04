@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
+import DashLayout from './hoc/Layout/DashLayout';
 import Login from './containers/Auth/Login/Login';
 import Logout from './containers/Auth/Logout';
+import Dashboard from './containers/Dashboard/Dashboard';
 import Signup from './containers/Auth/Signup/Signup';
 import {fireB} from './firebase-config';
 import Spinner from './components/UI/Spinner/Spinner';
@@ -93,12 +95,16 @@ class App extends Component {
     return (
       <div>
         {this.state.isSignedIn ? (
-          <div>Signed In!
-            <Button onClick={()=>fireB.auth().signOut()}>Sign Out</Button>
-            <h1>Welcome {fireB.auth().currentUser.displayName}</h1>
-          </div>
+          <DashLayout>
+            <Switch>
+            <Route path={ROUTES.LANDING} exact component={Dashboard}/>
+            </Switch>
+            {/* <div>Signed In!
+              <Button onClick={()=>fireB.auth().signOut()}>Sign Out</Button>
+              <h1 style={{textAlign:"center"}}>Welcome {fireB.auth().currentUser.displayName}</h1>
+            </div> */}
+          </DashLayout>
 
-          
         ) : (
           <Layout>
             <Switch>
@@ -106,7 +112,6 @@ class App extends Component {
               <Route path={ROUTES.LOG_OUT} component={Logout} />
               <Route path={ROUTES.LOG_IN} component={Login} />
               <Route path={ROUTES.SIGN_UP} component={Signup} />
-
             </Switch>
           </Layout>
         )
