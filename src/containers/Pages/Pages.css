@@ -1,0 +1,46 @@
+.PagesContainer {
+    background-color: transparent;
+    padding: 8%;
+    padding-left: 15%;
+    width: 80%;
+    margin: 5%;
+    font-family: SegoeUI, Segoe UI;
+    text-align: center;
+}
+
+.PagesContainer h3 {
+    width: 100%;
+    font-size: 40px;
+    font-family: SegoeUI-Semibold, Segoe UI;
+    font-weight: 600;
+}
+
+.PagesContainer h5 {
+    width: 100%;
+    font-size: 30px;
+    font-family: SegoeUI-Semibold, Segoe UI;
+    font-weight: 600;
+}
+
+.PagesContainer img {
+    width: 5%;
+    height: 5%;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+.Pages {
+    padding: 10px;
+    width:100%;
+    text-align: center;
+}
+
+.Page {
+    padding: 10px;
+    margin: 25px;
+    border-radius: 25px;
+    display: inline-block;
+    background-color: aqua;
+    height: 120px;
+    width: 120px;
+}
