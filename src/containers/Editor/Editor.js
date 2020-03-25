@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import "./Editor.css";
 import "tui-image-editor/dist/tui-image-editor.css";
 import ImageEditor from "@toast-ui/react-image-editor";
 import Button from "react-bootstrap/Button";
+import {fstore, fireB} from "../../firebase-config"
+
 const icona = require("tui-image-editor/dist/svg/icon-a.svg");
 const iconb = require("tui-image-editor/dist/svg/icon-b.svg");
 const iconc = require("tui-image-editor/dist/svg/icon-c.svg");
 const icond = require("tui-image-editor/dist/svg/icon-d.svg");
 const download = require("downloadjs");
+
 const myTheme = {
   "menu.backgroundColor": "white",
   "common.backgroundColor": "#151515",
@@ -19,9 +22,14 @@ const myTheme = {
   "menu.disabledIcon.path": icona,
   "menu.hoverIcon.path": iconc,
 };
-function HomePage() {
-  const [imageSrc, setImageSrc] = useState("");
-  
+
+function Editor(props) {
+  const [imageSrc, setImageSrc] = useState(props.location.state.data);
+  const imageID = props.location.state.id;
+  const storyID = props.location.state.sId;
+  const isEditing = props.location.state.editing;
+  console.log("ID received: " + imageID);
+  console.log("Story ID received: " + storyID);
   const imageEditor = React.createRef();
 
   const saveImageToDisk = () => {
@@ -30,19 +38,40 @@ function HomePage() {
     if (data) {
       const mimeType = data.split(";")[0];
       const extension = data.split(";")[0].split("/")[1];
-      download(data, `image.${extension}`, mimeType);
-    }
-  };
+
+      var today = new Date(); 
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + '  ' + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+      if(isEditing){
+        var docRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(storyID).collection("Pages").doc(imageID);
+        docRef.set({
+          url: data,
+          default: false,
+          date: date
+        })
+      }
+      else{
+        var docRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(storyID).collection("Pages").doc();
+        docRef.set({
+          url: data,
+          default: false,
+          date: date
+        })
+      }
+    };
+  }
+
   return (
     <div className="home-page">
+          {console.log("Started")}
       <div className="center">
         <h1>Photo Editor</h1>
-        <Button className='button' onClick={saveImageToDisk}>Save Image to Disk</Button>
+        <Button className='button' onClick={saveImageToDisk}>Save Image to Database</Button>
       </div>
       <ImageEditor
         includeUI={{
           loadImage: {
-            path: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+            path: imageSrc,
             name: "image",
           },
           theme: myTheme,
@@ -65,4 +94,4 @@ function HomePage() {
     </div>
   );
 }
-export default HomePage;
+export default Editor;

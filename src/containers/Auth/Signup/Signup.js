@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './Signup.css';
 import { NavLink } from 'react-router-dom';
 
-import { Redirect } from 'react-router-dom'
-import {fireB, googleProvider } from '../../../firebase-config'
+import { Redirect } from 'react-router-dom';
+import {fireB, googleProvider, fstore} from '../../../firebase-config';
 
 class Signup extends Component {
 
@@ -25,6 +25,9 @@ class Signup extends Component {
         }
         else {
           this.setState({redirect: true});
+          // fstore.collection("Users").doc(fireB.auth().currentUser.uid).set({
+          // })
+          fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").add({default: true})
         }
       })
     }

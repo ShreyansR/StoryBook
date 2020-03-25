@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Redirect } from 'react-router-dom'
 //import { Toaster, Intent } from '@blueprintjs/core'
-import {fireB, googleProvider } from '../../../firebase-config'
+import {fireB, googleProvider, fstore } from '../../../firebase-config'
 
 
 class Login extends Component {
@@ -26,6 +26,20 @@ class Login extends Component {
         }
         else {
           this.setState({redirect: true});
+          console.log("The current ID: " + fireB.auth().currentUser.uid)
+          //check if the user has an entry in the firestore portfolio database
+          const usersRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid)
+          usersRef.get().then((docSnapshot) => {
+            if(docSnapshot.exists){
+              //do nothing
+            }
+            else{
+              //create their portfolio in the firestore database
+              fstore.collection("Users").doc(fireB.auth().currentUser.uid).set({
+              })
+              fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").add({default: true})
+            }
+          })
         }
       })
   }

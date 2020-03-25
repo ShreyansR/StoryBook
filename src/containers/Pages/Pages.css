@@ -36,11 +36,11 @@
 }
 
 .Page {
-    padding: 10px;
-    margin: 25px;
-    border-radius: 25px;
-    display: inline-block;
-    background-color: aqua;
-    height: 120px;
-    width: 120px;
+    /* padding: 10px; */
+    /* margin: 25px; */
+    /* border-radius: 25px; */
+    /* display: inline-block; */
+    height: 1000px;
+    width: 500px;
 }
+

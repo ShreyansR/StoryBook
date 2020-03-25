@@ -103,10 +103,7 @@ class App extends Component {
           <Layout isSignedIn={this.state.isSignedIn}>
             <Switch>
               <Route path={ROUTES.LANDING} exact component={Portfolio}/>
-              <Route
-              path="/editor"
-              exact
-              component={Editor}
+              <Route path="/editor" exact component={Editor}
               />
               <Route path={ROUTES.DASHBOARD} exact component={Portfolio}/>
               <Route path={ROUTES.PAGES} exact component={Pages}/>
@@ -120,6 +117,9 @@ class App extends Component {
               <Route path={ROUTES.LOG_OUT} component={Logout} />
               <Route path={ROUTES.LOG_IN} component={Login} />
               <Route path={ROUTES.SIGN_UP} component={Signup} />
+              <Route path={ROUTES.PORTFOLIO} component={Portfolio} />
+              <Route path={ROUTES.PAGES} component={Pages} />
+
             </Switch>
           </Layout>
         )
