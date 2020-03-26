@@ -17,6 +17,12 @@ class Portfolio extends Component {
         }
     }
 
+    componentDidMount() {
+        this.getStories().then(result => {
+            console.log(result);
+        })
+    }
+
     createStory(){
        this.createStoryCollection().then(result => {
             this.createPagesCollection(result).then(result2 => {
@@ -57,11 +63,43 @@ class Portfolio extends Component {
         })
     }
 
-    componentDidMount() {
-        this.getStories().then(result => {
-            console.log(result);
+
+    clickRemove(storyId){
+        // first, delete the "Pages" subcollection
+        this.removePagesCollection(storyId).then((result) => {
+            // delete the "story" document
+            this.removeStoryCollection(storyId).then((result) => {
+                // re-set the state
+                this.getStories().then((result) => {
+                    //do nothing
+                });
+            })
         })
     }
+
+    removeStoryCollection(storyId){
+        return new Promise((resolve, reject) => {
+            fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(storyId).delete();
+            resolve(true);
+        })
+    }
+
+    removePagesCollection(storyId){
+        // delete the "Pages" subcollection, to ensure that it's not orphaned in firestore
+        return new Promise((resolve, reject) => {
+            var pages = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(storyId).collection("Pages");
+            pages.get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) =>{
+                    console.log(doc.id)
+                    // delete each page in the Pages collection, this will delete the Pages collection itself
+                    fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(storyId).collection("Pages").doc(doc.id).delete();  
+                });
+                resolve(true);
+            });
+
+        })
+    }
+
 
     //create image object
     getStories(){
@@ -86,6 +124,12 @@ class Portfolio extends Component {
         })
     }
 
+    getStoryThumbnail(){
+        return new Promise((resolve, reject) => {
+            resolve(true)
+        })
+    }
+
     render() {
         return (
             <div className={"PortfolioContainer"}>
@@ -107,6 +151,8 @@ class Portfolio extends Component {
                                 >
                                 <p>{story.storyId}</p>
                                 </NavLink>
+                                <p onClick={this.clickRemove.bind(this, story.storyId)}>Remove</p>
+                                {/* <img src="https://image.flaticon.com/icons/svg/25/25230.svg" onClick={this.clickRemove.bind(this, story.storyId)}/> */}
                             </div>
                         ))}
                     </div>

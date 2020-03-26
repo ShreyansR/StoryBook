@@ -48,6 +48,9 @@ class Pages extends Component {
         this.removePage(pageId).then(result => {
             console.log("Successfully removed page: " + pageId);
             window.location.reload(false);
+            // this.getURLs().then((result) => {
+            //     // do nothing
+            // })
         })
     }
 
@@ -133,7 +136,7 @@ class Pages extends Component {
                                 >
                                 <img className={"Page"} src={image.dataUrl}/>
                                 </NavLink>
-                                <p onClick={this.clickRemove.bind(this, image.dataId)}>Remove</p>
+                                <img src="https://image.flaticon.com/icons/svg/25/25230.svg" onClick={this.clickRemove.bind(this, image.dataId)}/>
                             </div>
                         ))}
                     </div>
