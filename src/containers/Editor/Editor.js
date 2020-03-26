@@ -4,6 +4,8 @@ import "tui-image-editor/dist/tui-image-editor.css";
 import ImageEditor from "@toast-ui/react-image-editor";
 import Button from "react-bootstrap/Button";
 import {fstore, fireB} from "../../firebase-config"
+import { Redirect } from 'react-router-dom'
+
 
 const icona = require("tui-image-editor/dist/svg/icon-a.svg");
 const iconb = require("tui-image-editor/dist/svg/icon-b.svg");
@@ -28,8 +30,7 @@ function Editor(props) {
   const imageID = props.location.state.id;
   const storyID = props.location.state.sId;
   const isEditing = props.location.state.editing;
-  console.log("ID received: " + imageID);
-  console.log("Story ID received: " + storyID);
+  const [redirect,setRedirect] = useState(false);
   const imageEditor = React.createRef();
 
   const saveImageToDisk = () => {
@@ -58,12 +59,23 @@ function Editor(props) {
           date: date
         })
       }
+      setRedirect(true);
     };
+  }
+
+  
+  if (redirect === true) {
+    return <Redirect to = {{
+      pathname: '/Pages',
+      state: {
+        storyId: storyID
+      }
+    }} 
+      />
   }
 
   return (
     <div className="home-page">
-          {console.log("Started")}
       <div className="center">
         <h1>Photo Editor</h1>
         <Button className='button' onClick={saveImageToDisk}>Save Image to Database</Button>

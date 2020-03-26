@@ -24,7 +24,7 @@ class Pages extends Component {
     componentDidMount() {
         this.getURLs().then(result => {
             this.getStoryName().then(result => {
-                console.log("this is the story name: " + this.state.story);
+                // console.log("this is the story name: " + this.state.story);
                 this.setState({
                     story: result
                 })
@@ -37,7 +37,7 @@ class Pages extends Component {
             var story;
             var docRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(this.state.sId);
             docRef.get().then(function(doc) {
-                console.log(doc.data().storyName);
+                // console.log(doc.data().storyName);
                 story = doc.data().storyName;
                 resolve(story);
             });
@@ -46,7 +46,7 @@ class Pages extends Component {
 
     clickRemove(pageId){
         this.removePage(pageId).then(result => {
-            console.log("Successfully removed page: " + pageId);
+            // console.log("Successfully removed page: " + pageId);
             window.location.reload(false);
             // this.getURLs().then((result) => {
             //     // do nothing

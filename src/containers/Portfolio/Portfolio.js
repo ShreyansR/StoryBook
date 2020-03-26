@@ -19,7 +19,7 @@ class Portfolio extends Component {
 
     componentDidMount() {
         this.getStories().then(result => {
-            console.log(result);
+            // console.log(result);
         })
     }
 
@@ -44,7 +44,7 @@ class Portfolio extends Component {
                 default: false,
                 dateCreated: date
             }).then((result) => {
-                console.log("Result from adding story: " + docRef.id);
+                // console.log("Result from adding story: " + docRef.id);
                 // this.createPagesCollection(docRef.id);
                 resolve(docRef.id);
             })
@@ -90,7 +90,7 @@ class Portfolio extends Component {
             var pages = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(storyId).collection("Pages");
             pages.get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) =>{
-                    console.log(doc.id)
+                    // console.log(doc.id)
                     // delete each page in the Pages collection, this will delete the Pages collection itself
                     fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(storyId).collection("Pages").doc(doc.id).delete();  
                 });
