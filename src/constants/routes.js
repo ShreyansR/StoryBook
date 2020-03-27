@@ -7,6 +7,7 @@ export const DASHBOARD = '/dashboard';
 export const PAGES = '/pages';
 export const PORTFOLIO = '/portfolio';
 export const EDITOR = '/editor';
+export const FLIPBOOK = '/flipbook'
 
 // export const ACCOUNT = '/account';
 // export const ADMIN = '/admin';

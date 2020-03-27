@@ -10,16 +10,22 @@ class Portfolio extends Component {
         super(props);
         this.state = {
             storyName: this.props.story,
+            gatheredThumbnails: false,
             stories: [{
                 storyId: "",
                 storyName: "",
-            }]
+                cover: ""
+            }],
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getStories().then(result => {
-            // console.log(result);
+            console.log("this is the result from the getStories promise: " + this.state.stories);
+            console.log(this.state.stories);
+            this.setState({
+                gatheredThumbnails: true
+            })
         })
     }
 
@@ -109,28 +115,39 @@ class Portfolio extends Component {
             var storiesList = [];
             var queryRef = pages.where('default', '==', false)
             queryRef.get().then((querySnapshot) => {
+                // put promise here
                 querySnapshot.forEach((doc) =>{
-                    var storyObject = {
-                        storyId: doc.id,
-                        storyName: doc.data().storyName
-                    }
-                    storiesList.push(storyObject);
-                });
+                    // this.getThumbnail(doc.id).then((result) => {
+                        var storyObject = {
+                            storyId: doc.id,
+                            storyName: doc.data().storyName,
+                            // cover: result
+                        }
+                        storiesList.push(storyObject);
+                    })  
+                // });
                 this.setState({
                     stories: storiesList
                 })
-            resolve(true);
+                resolve(true);
             });
         })
     }
 
-    getStoryThumbnail(){
+    getThumbnail(sId){
+        // grab the first page image in firestore for the story provided
         return new Promise((resolve, reject) => {
-            resolve(true)
+            var pageRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(sId).collection("Pages").where('default', '==', false).limit(1);
+            pageRef.get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    resolve(doc.data().url)
+                })
+            })  
         })
     }
 
     render() {
+        if(this.state.gatheredThumbnails == false) return null;
         return (
             <div className={"PortfolioContainer"}>
                 <h3>Create a Story</h3>
@@ -141,6 +158,7 @@ class Portfolio extends Component {
                     <div className={"Stories"}>
                         {this.state.stories.map(story => (
                             <div key={story.storyId}>
+
                                 <NavLink to = {{
                                     pathname:"/Pages",
                                     state:{
@@ -149,7 +167,7 @@ class Portfolio extends Component {
                                 }}
                                 exact
                                 >
-                                <p>{story.storyId}</p>
+                                <p>{story.storyName}</p>
                                 </NavLink>
                                 <p onClick={this.clickRemove.bind(this, story.storyId)}>Remove</p>
                                 {/* <img src="https://image.flaticon.com/icons/svg/25/25230.svg" onClick={this.clickRemove.bind(this, story.storyId)}/> */}

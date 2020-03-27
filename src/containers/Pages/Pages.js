@@ -1,8 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import './Pages.css';
-import Editor from '../Editor/Editor'
 // import FabricEditor from '../Editor/FabricEditor'
-import {history} from 'react-router';
 import { NavLink } from 'react-router-dom';
 import {fstore, fireB} from "../../firebase-config"
 
@@ -88,11 +86,6 @@ class Pages extends Component {
         this.setState({
             tempStory: event.target.value
         })
-        // console.log("story name should be updated");
-        // var docRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(this.state.sId);
-        // docRef.update({
-        //     "storyName": "test"
-        // })
     }
 
     mySubmitHandler(event){
@@ -116,8 +109,16 @@ class Pages extends Component {
                     </label>
                     <input type="submit" value="Change Name"/>
                 </form>
-                {/* <button onClick={this.updateStoryName.bind(this)}>Update Story Name</button> */}
-                
+                <NavLink to = {{
+                    pathname:"/Flipbook",
+                    state:{
+                        urls: this.state.urls
+                    }
+                }}
+                exact
+                >
+                <button>View Book</button>
+                </NavLink>
                 <div>
                     <h5>Pages</h5>
                     <div className={"Pages"}>

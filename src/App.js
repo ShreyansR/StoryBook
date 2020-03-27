@@ -8,6 +8,7 @@ import Logout from './containers/Auth/Logout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Portfolio from './containers/Portfolio/Portfolio';
 import Pages from './containers/Pages/Pages';
+import Flipbook from './containers/Pages/Flipbook'
 import Signup from './containers/Auth/Signup/Signup';
 import {fireB} from './firebase-config';
 import Spinner from './components/UI/Spinner/Spinner';
@@ -107,6 +108,8 @@ class App extends Component {
               />
               <Route path={ROUTES.DASHBOARD} exact component={Portfolio}/>
               <Route path={ROUTES.PAGES} exact component={Pages}/>
+              <Route path={ROUTES.FLIPBOOK} exact component={Flipbook} />
+
             </Switch>
           </Layout>
 
@@ -119,6 +122,7 @@ class App extends Component {
               <Route path={ROUTES.SIGN_UP} component={Signup} />
               <Route path={ROUTES.PORTFOLIO} component={Portfolio} />
               <Route path={ROUTES.PAGES} component={Pages} />
+              <Route path={ROUTES.FLIPBOOK} component={Flipbook} />
 
             </Switch>
           </Layout>
