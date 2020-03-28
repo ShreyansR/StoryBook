@@ -1,18 +1,29 @@
-import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, {Component}from "react";
+import { Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 import Layout from './hoc/Layout/Layout';
+import DashLayout from './hoc/Layout/DashLayout';
 import Login from './containers/Auth/Login/Login';
 import Logout from './containers/Auth/Logout';
+import Dashboard from './containers/Dashboard/Dashboard';
+import Portfolio from './containers/Portfolio/Portfolio';
+import Pages from './containers/Pages/Pages';
+import Flipbook from './containers/Pages/Flipbook'
 import Signup from './containers/Auth/Signup/Signup';
 import {fireB} from './firebase-config';
 import Spinner from './components/UI/Spinner/Spinner';
-import {Button} from '@blueprintjs/core';
 import * as ROUTES from './constants/routes';
 
+import "./App.css";
+
+import { createBrowserHistory as createHistory } from "history";
+import Editor from "./containers/Editor/Editor";
+const history = createHistory();
+
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.pesdk = React.createRef();
     this.setCurrentUser = this.setCurrentUser.bind(this);
     this.state={ 
       isSignedIn:false, 
@@ -37,8 +48,6 @@ class App extends Component {
       })
     }
   }
-
-
 
   componentWillMount() {
     this.removeAuthListener = fireB.auth().onAuthStateChanged((user) => {
@@ -80,7 +89,6 @@ class App extends Component {
       }
     });
   }
-
   render() {
     if (this.state.loading === true) {
       return (
@@ -93,19 +101,28 @@ class App extends Component {
     return (
       <div>
         {this.state.isSignedIn ? (
-          <div>Signed In!
-            <Button onClick={()=>fireB.auth().signOut()}>Sign Out</Button>
-            <h1>Welcome {fireB.auth().currentUser.displayName}</h1>
-          </div>
+          <Layout isSignedIn={this.state.isSignedIn}>
+            <Switch>
+              <Route path={ROUTES.LANDING} exact component={Portfolio}/>
+              <Route path="/editor" exact component={Editor}
+              />
+              <Route path={ROUTES.DASHBOARD} exact component={Portfolio}/>
+              <Route path={ROUTES.PAGES} exact component={Pages}/>
+              <Route path={ROUTES.FLIPBOOK} exact component={Flipbook} />
 
-          
+            </Switch>
+          </Layout>
+
         ) : (
-          <Layout>
+          <Layout isSignedIn={this.state.isSignedIn}>
             <Switch>
               <Route path={ROUTES.LANDING} exact component={Signup}/>
               <Route path={ROUTES.LOG_OUT} component={Logout} />
               <Route path={ROUTES.LOG_IN} component={Login} />
               <Route path={ROUTES.SIGN_UP} component={Signup} />
+              <Route path={ROUTES.PORTFOLIO} component={Portfolio} />
+              <Route path={ROUTES.PAGES} component={Pages} />
+              <Route path={ROUTES.FLIPBOOK} component={Flipbook} />
 
             </Switch>
           </Layout>

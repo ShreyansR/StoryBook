@@ -1,4 +1,4 @@
-.Container {
+.SignupContainer {
     background-color: transparent;
     padding-top: 40px;
     padding-left: 80px;
@@ -25,15 +25,15 @@
 }
 
 
-.GoogleButton {
+.SignupGoogleButton {
     background-color: transparent;
     margin-bottom: 20px;
     color: #7A8888;
     cursor: pointer;
 }
 
-.GoogleButton span,
-.EmailButton span {
+.SignupGoogleButton span,
+.SignupEmailButton span {
     vertical-align: middle;
     font-size: 20px;
 }
@@ -42,7 +42,7 @@
     float: left;
 }
 
-.EmailButton {
+.SignupEmailButton {
     background-color: #00C4CC;
     color: white;
     cursor: pointer;
@@ -56,7 +56,7 @@
     border-radius: 4px;
 }
 
-.LoginFormButton {
+.SignupFormButton {
     background-color: #00C4CC;
     vertical-align: middle;
     font-size: 20px;
@@ -75,20 +75,20 @@
 }
 
 
-.cls1 {
+.Signupcls1 {
     opacity: 0.56;
 }
 
-.cls2 {
+.Signupcls2 {
     fill: none;
     stroke: #707070;
 }
 
-.cls3 {
+.Signupcls3 {
     fill: #fff;
 }
 
-.cls4 {
+.Signupcls4 {
     fill: #7a8888;
     font-size: 9px;
     font-family: SegoeUI, Segoe UI;

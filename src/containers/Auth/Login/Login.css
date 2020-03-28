@@ -1,4 +1,4 @@
-.Container {
+.LoginContainer {
   background-color: transparent;
   padding-top: 40px;
   padding-left: 80px;
@@ -15,12 +15,12 @@
   font-weight: 600;
 }
 
-.GoogleButton {
+.LoginGoogleButton {
   background-color: transparent;
   cursor: pointer;
 }
 
-.GoogleButton span {
+.LoginGoogleButton span {
   vertical-align: middle;
   font-size: 20px;
   color: #7A8888;
@@ -59,20 +59,20 @@
 
 
 
-.cls1 {
+.Logincls1 {
   opacity: 0.56;
 }
 
-.cls2 {
+.Logincls2 {
   fill: none;
   stroke: #707070;
 }
 
-.cls3 {
+.Logincls3 {
   fill: #fff;
 }
 
-.cls4 {
+.Logincls4 {
   fill: #7a8888;
   font-size: 9px;
   font-family: SegoeUI, Segoe UI;

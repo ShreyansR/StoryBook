@@ -1,18 +1,18 @@
 import React from 'react';
-import classes from './Navbar.css';
+import './Navbar.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import DrawerToggle from '../SideDrawer/DrawerToggle';
 
 const navbar = (props) => (
-    <header className={classes.Navbar}>
+    <header className={"Navbar"}>
         <DrawerToggle  clicked={props.drawerToggleClicked}/>
 
-        <div className={classes.Logo}>
+        <div className={"NavLogo"}>
             <Logo />
         </div>
-        <nav className={classes.DesktopOnly}>
-            <NavigationItems />
+        <nav className={"DesktopOnly"}>
+            <NavigationItems auth={props.auth} />
         </nav>
     </header>
 );

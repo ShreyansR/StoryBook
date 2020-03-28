@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import classes from './Login.css';
+import './Login.css';
 import { NavLink } from 'react-router-dom';
 
 import { Redirect } from 'react-router-dom'
 //import { Toaster, Intent } from '@blueprintjs/core'
-import {fireB, googleProvider } from '../../../firebase-config'
+import {fireB, googleProvider, fstore } from '../../../firebase-config'
 
 
 class Login extends Component {
@@ -26,17 +26,26 @@ class Login extends Component {
         }
         else {
           this.setState({redirect: true});
+          console.log("The current ID: " + fireB.auth().currentUser.uid)
+          //check if the user has an entry in the firestore portfolio database
+          const usersRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid)
+          usersRef.get().then((docSnapshot) => {
+            if(docSnapshot.exists){
+              //do nothing
+            }
+            else{
+              //create their portfolio in the firestore database
+              fstore.collection("Users").doc(fireB.auth().currentUser.uid).set({
+              })
+              fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").add({default: true})
+            }
+          })
         }
       })
   }
 
   authWithEmailPassword(event) {
     event.preventDefault();
-    console.log("authed with email");
-    console.table([{
-      email: this.emailInput.value,
-      password: this.passwordInput.value
-    }])
     fireB.auth().signInWithEmailAndPassword(this.emailInput.value, this.passwordInput.value);
   }
 
@@ -47,12 +56,12 @@ class Login extends Component {
 
     return (
 
-        <div className={classes.Container}>
-          <div className={classes.LoginForm}>
+        <div className={"LoginContainer"}>
+          <div className={"LoginForm"}>
             <h3>Log in to your account</h3>
-            <button onClick={() => {this.authWithGoogle()}} className={classes.GoogleButton}>
+            <button onClick={() => {this.authWithGoogle()}} className={"LoginGoogleButton"}>
               <span>
-                <span className={classes.GoogleLoginLogo}>
+                <span className={"GoogleLoginLogo"}>
                   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                   <g fill="none" fillRule="evenodd">
                     <path d="M20.64 12.2c0-.63-.06-1.25-.16-1.84H12v3.49h4.84a4.14 4.14 0 0 1-1.8 2.71v2.26h2.92a8.78 8.78 0 0 0 2.68-6.62z" fill="#4285F4"></path>
@@ -68,10 +77,10 @@ class Login extends Component {
             </button>
 
             <svg xmlns="http://www.w3.org/2000/svg" width="344" height="30" viewBox="0 0 344 14">
-              <g id="Group_11" data-name="Group 11" className={classes.cls1} transform="translate(-212.5 -421)">
-                <line id="Line_1" data-name="Line 1" className={classes.cls2} x2="344" transform="translate(212.5 428.5)"/>
-                <rect id="Rectangle_5" data-name="Rectangle 5" className={classes.cls3} width="18" height="13" transform="translate(377 422)"/>
-                <text id="OR" className={classes.cls4} transform="translate(380 431)"><tspan x="0" y="0">OR</tspan></text>
+              <g id="Group_11" data-name="Group 11" className={"Logincls1"} transform="translate(-212.5 -421)">
+                <line id="Line_1" data-name="Line 1" className={"Logincls2"} x2="344" transform="translate(212.5 428.5)"/>
+                <rect id="Rectangle_5" data-name="Rectangle 5" className={"Logincls3"} width="18" height="13" transform="translate(377 422)"/>
+                <text id="OR" className={"Logincls4"} transform="translate(380 431)"><tspan x="0" y="0">OR</tspan></text>
               </g>
             </svg>
 
@@ -80,7 +89,7 @@ class Login extends Component {
 
               <input ref={(input) => {this.passwordInput = input}} type="password" className="loginPassword" placeholder="Password"/>
 
-              <button className={classes.LoginFormButton} type="submit">
+              <button className={"LoginFormButton"} type="submit">
                 <span>
                   Log in
                 </span>
