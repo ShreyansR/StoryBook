@@ -13,7 +13,7 @@ import Signup from './containers/Auth/Signup/Signup';
 import {fireB} from './firebase-config';
 import Spinner from './components/UI/Spinner/Spinner';
 import * as ROUTES from './constants/routes';
-
+import Homepage from './containers/Homepage/Homepage';
 import "./App.css";
 
 import { createBrowserHistory as createHistory } from "history";
@@ -116,7 +116,7 @@ class App extends Component {
         ) : (
           <Layout isSignedIn={this.state.isSignedIn}>
             <Switch>
-              <Route path={ROUTES.LANDING} exact component={Signup}/>
+              <Route path={ROUTES.LANDING} exact component={Homepage}/>
               <Route path={ROUTES.LOG_OUT} component={Logout} />
               <Route path={ROUTES.LOG_IN} component={Login} />
               <Route path={ROUTES.SIGN_UP} component={Signup} />

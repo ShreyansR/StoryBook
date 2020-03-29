@@ -1,0 +1,73 @@
+
+  
+  html{
+    scroll-behavior: smooth;
+  }
+  
+  
+  /*SECTIONS*/
+  /*Welcome Banner*/
+  /*fade affect*/
+  .welcomeBanner{
+    background-color: #55939b;
+    padding: 300px;
+    transition: all 1s ease-out;
+    text-align: center;
+  }
+  .welcomeBanner:hover{
+    background-color: #275d64;
+    color: white;
+  }
+  
+  /* Prevew Section classes */
+  .storyPreviewSection{
+    padding: 270px;
+    background-color:rgb(209, 164, 51);
+    text-align: left;
+  }
+
+  .description{
+    text-align: right;
+  }
+
+  .createNowBtn{
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 10px;
+    background-color:white;
+    color:black;
+  }
+  
+  
+  /*Features Section*/
+  .featuresSection{
+    padding: 270px;
+    background-color: #55939b;
+  }
+  
+  .FAQSection{
+    padding: 100px;
+    background-color:rgb(209, 164, 51)
+  }
+  
+  .aboutUsSection{
+    padding: 270px;
+    background-color: #55939b;
+  }
+  
+  /*image and text position on homepage*/
+  .imageLeft{
+    float: left;
+  }
+  
+  .imageRight{
+    float: right;
+  }
+  
+  .textRight{
+    text-align:right;
+  }
+  
+  .textLeft{
+    text-align: left;
+  }
