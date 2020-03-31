@@ -31,10 +31,10 @@ class Pages extends Component {
         })        
     }
 
-    createPdf(data){
+    //assemble all of the pages in the database into one pdf, show in new tab
+    createPdf(){
         //create a new pdf file
         var doc = new jsPDF('p', 'mm', [480, 480]);
-
         //let the picture start at the top left corner
         let left = 0;
         let top = 0;
@@ -42,16 +42,20 @@ class Pages extends Component {
         //scale the picture so it fits the whole page
         const imgWidth = doc.internal.pageSize.getWidth();
         const imgHeight = doc.internal.pageSize.getHeight();
-
-        //add the dataurl to the pdf page
-        doc.addImage(data, 'PNG', left, top, imgWidth, imgHeight);
-
-        //add a new page
-        doc.addPage();
-        doc.addImage(data, 'PNG', left, top, imgWidth, imgHeight);
-
+        
+        //loop through the gathered urls and create a pdf page for each
+        var i;
+        for (i = 0; i < this.state.urls.length; i++){
+            if(i != 0){
+                //add a new page
+                doc.addPage();
+            }
+            //add the dataurl to the pdf page
+            doc.addImage(this.state.urls[i].dataUrl, 'PNG', left, top, imgWidth, imgHeight);
+        }
         //show the created pdf in a new window
-        doc.output('dataurlnewwindow'); 
+        // doc.output('dataurlnewwindow'); 
+        doc.save("story.pdf");
     }
 
     getStoryName(){
@@ -143,6 +147,7 @@ class Pages extends Component {
                 >
                 <button>View Book</button>
                 </NavLink>
+                <button onClick={this.createPdf.bind(this)}>PDF it</button>
                 <div>
                     <h5>Pages</h5>
                     <div className={"Pages"}>
@@ -162,7 +167,6 @@ class Pages extends Component {
                                 <img className={"Page"} src={image.dataUrl}/>
                                 </NavLink>
                                 <img src="https://image.flaticon.com/icons/svg/25/25230.svg" onClick={this.clickRemove.bind(this, image.dataId)}/>
-                                <button onClick={this.createPdf.bind(this, image.dataUrl)}>PDF it</button>
                             </div>
                         ))}
                     </div>
