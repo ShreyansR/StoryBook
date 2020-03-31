@@ -2,7 +2,8 @@ import React, { Component, useState, useEffect } from 'react';
 import './Pages.css';
 // import FabricEditor from '../Editor/FabricEditor'
 import { NavLink } from 'react-router-dom';
-import {fstore, fireB} from "../../firebase-config"
+import {fstore, fireB} from "../../firebase-config";
+import jsPDF from "jspdf";
 
 
 class Pages extends Component { 
@@ -28,6 +29,29 @@ class Pages extends Component {
                 })
             });
         })        
+    }
+
+    createPdf(data){
+        //create a new pdf file
+        var doc = new jsPDF('p', 'mm', [480, 480]);
+
+        //let the picture start at the top left corner
+        let left = 0;
+        let top = 0;
+
+        //scale the picture so it fits the whole page
+        const imgWidth = doc.internal.pageSize.getWidth();
+        const imgHeight = doc.internal.pageSize.getHeight();
+
+        //add the dataurl to the pdf page
+        doc.addImage(data, 'PNG', left, top, imgWidth, imgHeight);
+
+        //add a new page
+        doc.addPage();
+        doc.addImage(data, 'PNG', left, top, imgWidth, imgHeight);
+
+        //show the created pdf in a new window
+        doc.output('dataurlnewwindow'); 
     }
 
     getStoryName(){
@@ -138,6 +162,7 @@ class Pages extends Component {
                                 <img className={"Page"} src={image.dataUrl}/>
                                 </NavLink>
                                 <img src="https://image.flaticon.com/icons/svg/25/25230.svg" onClick={this.clickRemove.bind(this, image.dataId)}/>
+                                <button onClick={this.createPdf.bind(this, image.dataUrl)}>PDF it</button>
                             </div>
                         ))}
                     </div>
