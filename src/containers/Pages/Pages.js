@@ -2,7 +2,8 @@ import React, { Component, useState, useEffect } from 'react';
 import './Pages.css';
 // import FabricEditor from '../Editor/FabricEditor'
 import { NavLink } from 'react-router-dom';
-import {fstore, fireB} from "../../firebase-config"
+import {fstore, fireB} from "../../firebase-config";
+import jsPDF from "jspdf";
 
 
 class Pages extends Component { 
@@ -28,6 +29,33 @@ class Pages extends Component {
                 })
             });
         })        
+    }
+
+    //assemble all of the pages in the database into one pdf, show in new tab
+    createPdf(){
+        //create a new pdf file
+        var doc = new jsPDF('p', 'mm', [480, 480]);
+        //let the picture start at the top left corner
+        let left = 0;
+        let top = 0;
+
+        //scale the picture so it fits the whole page
+        const imgWidth = doc.internal.pageSize.getWidth();
+        const imgHeight = doc.internal.pageSize.getHeight();
+        
+        //loop through the gathered urls and create a pdf page for each
+        var i;
+        for (i = 0; i < this.state.urls.length; i++){
+            if(i != 0){
+                //add a new page
+                doc.addPage();
+            }
+            //add the dataurl to the pdf page
+            doc.addImage(this.state.urls[i].dataUrl, 'PNG', left, top, imgWidth, imgHeight);
+        }
+        //show the created pdf in a new window
+        // doc.output('dataurlnewwindow'); 
+        doc.save("story.pdf");
     }
 
     getStoryName(){
@@ -113,6 +141,7 @@ class Pages extends Component {
                 >
                 <button className={'viewBookBtn'}>View Book</button>
                 </NavLink>
+                <button onClick={this.createPdf.bind(this)}>PDF it</button>
                 <div>
                     <h5 className={'pagesTitle'}>Pages</h5>
                     <div className={"Pages"}>
