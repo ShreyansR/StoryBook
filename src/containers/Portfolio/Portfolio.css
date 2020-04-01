@@ -59,9 +59,10 @@ hr {
 }
 
 .removeBtn {
-    cursor: pointer;   
-    position: absolute;
+    cursor: pointer;
+    position: relative;
     transform: translate(-50%, -50%);
+    
 }
 
 .storyItems{
@@ -70,12 +71,13 @@ hr {
 
 
 .storyNameBtn {
-    height: 50px;
-    width: 550px; 
+    height: 30%;
+    width: 60%; 
     background-color:#275d64;;
     color:white;
     font-size: larger;
     border-radius: 4px;
+    padding: 1%;
 }
 
 /* can't change this because both the close button and the story name have their background changed*/

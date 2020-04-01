@@ -64,7 +64,7 @@ class Signup extends Component {
             <p>
                 Create an account and tell everyone for free.
             </p>
-            <br></br>
+
             <button onClick={() => {this.signupWithGoogle()}}className={"SignupGoogleButton"}>
               <span>
                 <span className={"GoogleSignupLogo"}>
@@ -77,12 +77,12 @@ class Signup extends Component {
                   </g>
                   </svg>
                 </span>
-                <span>Signup with Google</span>
+                <span>Sign up with Google</span>
               </span>
               
             </button>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="344" height="30" viewBox="0 0 344 14">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="30" viewBox="0 0 344 14">
               <g id="Group_11" data-name="Group 11" className={"Signupcls1"} transform="translate(-212.5 -421)">
                 <line id="Line_1" data-name="Line 1" className={"Signupcls2"} x2="344" transform="translate(212.5 428.5)"/>
                 <rect id="Rectangle_5" data-name="Rectangle 5" className={"Signupcls3"} width="18" height="13" transform="translate(377 422)"/>
@@ -103,7 +103,7 @@ class Signup extends Component {
                         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                         </svg>
                         </span>
-                        <span>Signup with Email</span>
+                        <span>Sign up with Email</span>
                     </span>
                 </button>
             </form>

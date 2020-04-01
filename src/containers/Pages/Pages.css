@@ -17,7 +17,7 @@
 
 .PagesContainer h5 {
     width: 100%;
-    font-size: 30px;
+    font-size: 3.5vw;
     font-family: SegoeUI-Semibold, Segoe UI;
     font-weight: 600;
 }
@@ -52,7 +52,7 @@ input{
 .inputField {
     border: none;
     border-bottom: 4px solid black;
-    font-size: 50px;
+    font-size: 3vw;
     text-align: center;
 }
 
@@ -66,12 +66,16 @@ input{
 
 .viewBookBtn{
     border-radius: 4px;
-    font-size: 22px;
+    font-size: 1.5vw;
     text-align: center;
     border:none;
     background-color: #275d64;
     color: white;
-    padding: 10px;
+    padding: 1%;
+}
+
+.pagesTitle{
+    padding-top: 5%;
 }
 
 

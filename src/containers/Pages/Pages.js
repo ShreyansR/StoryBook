@@ -114,8 +114,7 @@ class Pages extends Component {
                 <button className={'viewBookBtn'}>View Book</button>
                 </NavLink>
                 <div>
-                    <br></br><br></br>
-                    <h5>Pages</h5>
+                    <h5 className={'pagesTitle'}>Pages</h5>
                     <div className={"Pages"}>
                     {this.state.urls.map(image => (
                             <div key={image.dataId}>

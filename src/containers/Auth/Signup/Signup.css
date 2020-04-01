@@ -30,7 +30,7 @@
 
 .SignupGoogleButton {
     background-color: transparent;
-    margin-bottom: 20px;
+    margin-bottom: 3%;
     color: #7A8888;
     cursor: pointer;
 }
@@ -49,6 +49,19 @@
     background-color: #00C4CC;
     color: white;
     cursor: pointer;
+}
+
+.signupName {
+    transform: translate(-1.5%, 0%);
+    margin-top: 3%;
+}
+
+.signupEmail{
+    transform: translate(-1.5%, 0%);
+}
+
+.signupPassword{
+    transform: translate(-1.5%, 0%);
 }
 
 .SignupForm button {

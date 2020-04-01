@@ -8,6 +8,7 @@
   font-family: SegoeUI, Segoe UI;
   text-align: center; 
   margin: auto;
+  display: center;
 }
 
 
@@ -22,11 +23,12 @@
 .LoginGoogleButton {
   background-color: transparent;
   cursor: pointer;
+  margin-bottom: 3%;
 }
 
 .LoginGoogleButton span {
   vertical-align: middle;
-  font-size: 20px;
+  font-size: 1.25vw;
   color: #7A8888;
 }
 
@@ -59,6 +61,16 @@
   margin-bottom: 10px;
   font-size: 20px;
   text-indent: 15px;
+}
+
+
+.loginEmail {
+  margin-top: 3%;
+  transform: translate(-1.5%, 0%);
+}
+
+.loginPassword {
+  transform: translate(-1.5%, 0%);
 }
 
 
