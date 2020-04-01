@@ -1,6 +1,6 @@
 .PagesContainer {
     background-color: transparent;
-    padding: 8%;
+    padding: 2%;
     padding-left: 15%;
     width: 80%;
     margin: 5%;
@@ -17,7 +17,7 @@
 
 .PagesContainer h5 {
     width: 100%;
-    font-size: 30px;
+    font-size: 3.5vw;
     font-family: SegoeUI-Semibold, Segoe UI;
     font-weight: 600;
 }
@@ -40,7 +40,45 @@
     /* margin: 25px; */
     /* border-radius: 25px; */
     /* display: inline-block; */
-    height: 1000px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
 }
+
+/*what you added*/
+input{
+    margin-left: 10px;
+}
+
+.inputField {
+    border: none;
+    border-bottom: 4px solid black;
+    font-size: 3vw;
+    text-align: center;
+}
+
+.inputField:focus{
+    outline:none;
+}
+
+.closeBtn{
+    cursor: pointer;
+}
+
+.Btn{
+    border-radius: 4px;
+    font-size: 1.5vw;
+    text-align: center;
+    border:none;
+    background-color: black;
+    color: white;
+    padding: 1%;
+    margin-right: 2%;
+}
+
+
+
+.pagesTitle{
+    padding-top: 5%;
+}
+
 

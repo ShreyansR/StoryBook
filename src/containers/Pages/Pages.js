@@ -2,7 +2,8 @@ import React, { Component, useState, useEffect } from 'react';
 import './Pages.css';
 // import FabricEditor from '../Editor/FabricEditor'
 import { NavLink } from 'react-router-dom';
-import {fstore, fireB} from "../../firebase-config"
+import {fstore, fireB} from "../../firebase-config";
+import jsPDF from "jspdf";
 
 
 class Pages extends Component { 
@@ -28,6 +29,33 @@ class Pages extends Component {
                 })
             });
         })        
+    }
+
+    //assemble all of the pages in the database into one pdf, show in new tab
+    createPdf(){
+        //create a new pdf file
+        var doc = new jsPDF('p', 'mm', [480, 480]);
+        //let the picture start at the top left corner
+        let left = 0;
+        let top = 0;
+
+        //scale the picture so it fits the whole page
+        const imgWidth = doc.internal.pageSize.getWidth();
+        const imgHeight = doc.internal.pageSize.getHeight();
+        
+        //loop through the gathered urls and create a pdf page for each
+        var i;
+        for (i = 0; i < this.state.urls.length; i++){
+            if(i != 0){
+                //add a new page
+                doc.addPage();
+            }
+            //add the dataurl to the pdf page
+            doc.addImage(this.state.urls[i].dataUrl, 'PNG', left, top, imgWidth, imgHeight);
+        }
+        //show the created pdf in a new window
+        // doc.output('dataurlnewwindow'); 
+        doc.save("story.pdf");
     }
 
     getStoryName(){
@@ -82,33 +110,27 @@ class Pages extends Component {
         })
     }
 
-    updateStoryName(event){
-        this.setState({
-            tempStory: event.target.value
-        })
-    }
 
-    mySubmitHandler(event){
+    handleChange = (event) => {
         event.preventDefault();
-        //submit the changed name to firestore
-        fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(this.state.sId).update({
-            "storyName": this.state.tempStory
-        }).then(result => {
-            window.location.reload(false);
+        console.log(event.target.value)
+        this.setState({
+            story: event.target.value
+        }, () => {
+            console.log("_____",this.story)
+            fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(this.state.sId).update({
+                "storyName": this.state.story
+            });
         });
     }
     
     render() {
         return (
             <div className={"PagesContainer"}>
-                <h3>{this.state.story}</h3>
-                <form onSubmit={this.mySubmitHandler.bind(this)}>
-                    <label>
-                        Story Name:
-                        <input type="text" onChange={this.updateStoryName.bind(this)}/>
-                    </label>
-                    <input type="submit" value="Change Name"/>
+                <form>
+                    <input className={'inputField'} type='text' onChange={this.handleChange} value={this.state.story}></input>
                 </form>
+                <br></br>
                 <NavLink to = {{
                     pathname:"/Flipbook",
                     state:{
@@ -117,10 +139,11 @@ class Pages extends Component {
                 }}
                 exact
                 >
-                <button>View Book</button>
+                <button className={'Btn'}>View Book</button>
                 </NavLink>
+                <button className={'Btn'} onClick={this.createPdf.bind(this)}>PDF it</button>
                 <div>
-                    <h5>Pages</h5>
+                    <h5 className={'pagesTitle'}>Pages</h5>
                     <div className={"Pages"}>
                     {this.state.urls.map(image => (
                             <div key={image.dataId}>

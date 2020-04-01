@@ -59,6 +59,7 @@ class Login extends Component {
         <div className={"LoginContainer"}>
           <div className={"LoginForm"}>
             <h3>Log in to your account</h3>
+            <br></br>
             <button onClick={() => {this.authWithGoogle()}} className={"LoginGoogleButton"}>
               <span>
                 <span className={"GoogleLoginLogo"}>
@@ -76,7 +77,7 @@ class Login extends Component {
               
             </button>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="344" height="30" viewBox="0 0 344 14">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="30" viewBox="0 0 344 14">
               <g id="Group_11" data-name="Group 11" className={"Logincls1"} transform="translate(-212.5 -421)">
                 <line id="Line_1" data-name="Line 1" className={"Logincls2"} x2="344" transform="translate(212.5 428.5)"/>
                 <rect id="Rectangle_5" data-name="Rectangle 5" className={"Logincls3"} width="18" height="13" transform="translate(377 422)"/>
@@ -84,7 +85,7 @@ class Login extends Component {
               </g>
             </svg>
 
-            <form onSubmit={(event) => {this.authWithEmailPassword(event) }} ref={(form) => {this.loginForm = form}}>
+            <form className='loginEmailForm' onSubmit={(event) => {this.authWithEmailPassword(event) }} ref={(form) => {this.loginForm = form}}>
               <input ref={(input) => {this.emailInput = input}} type="email" className="loginEmail"  placeholder="Email"/>
 
               <input ref={(input) => {this.passwordInput = input}} type="password" className="loginPassword" placeholder="Password"/>
@@ -95,7 +96,7 @@ class Login extends Component {
                 </span>
               </button>
             </form>
-
+            <br></br>
             <p>
               Don't have an account?
               <span> </span>

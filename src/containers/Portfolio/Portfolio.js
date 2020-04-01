@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Portfolio.css';
 import { NavLink } from 'react-router-dom';
 import {fireB, googleProvider, fstore} from '../../firebase-config';
-
+import addBtn from '../../assests/images/plus-sign.png'
+import removeBtn from "../../assests/images/close-btn.svg"
 
 
 class Portfolio extends Component {
@@ -46,7 +47,7 @@ class Portfolio extends Component {
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + '  ' + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             var docRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc();
             docRef.set({
-                storyName: "storyName",
+                storyName: "* Recently Added Story *",
                 default: false,
                 dateCreated: date
             }).then((result) => {
@@ -150,27 +151,31 @@ class Portfolio extends Component {
         if(this.state.gatheredThumbnails == false) return null;
         return (
             <div className={"PortfolioContainer"}>
-                <h3>Create a Story</h3>
-                <img className={"Link"} onClick={this.createStory.bind(this)} src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Feather-core-plus-circle.svg/1200px-Feather-core-plus-circle.svg.png"/>
+                <h3>Create a New Story</h3>
+                <img className={"Link"} onClick={this.createStory.bind(this)} src={addBtn}/>
                 <hr></hr>
                 <div className={"CreatedStoriesContainer"}>
                     <h3>Your Stories</h3>
                     <div className={"Stories"}>
                         {this.state.stories.map(story => (
-                            <div key={story.storyId}>
+                            <div key={story.storyId} className={'storyItems'}>
+                                    <NavLink to = {{
+                                        pathname:"/Pages",
+                                        state:{
+                                            storyId: story.storyId
+                                        }
+                                    }}
 
-                                <NavLink to = {{
-                                    pathname:"/Pages",
-                                    state:{
-                                        storyId: story.storyId
-                                    }
-                                }}
-                                exact
-                                >
-                                <p>{story.storyName}</p>
-                                </NavLink>
-                                <p onClick={this.clickRemove.bind(this, story.storyId)}>Remove</p>
-                                {/* <img src="https://image.flaticon.com/icons/svg/25/25230.svg" onClick={this.clickRemove.bind(this, story.storyId)}/> */}
+                                    activeStyle={{
+                                        fontWeight: "bold",
+                                        color: "red"
+                                      }}
+
+                                    exact
+                                    >
+                                    <button className={'storyNameBtn'}>{story.storyName}</button>
+                                    </NavLink>
+                                <img className={'removeBtn pull-right'} src={removeBtn} onClick={this.clickRemove.bind(this, story.storyId)} /> 
                             </div>
                         ))}
                     </div>

@@ -36,7 +36,7 @@ class Flipbook extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className={"App"}>
                 <FlippingPages
                     className="App-pages"
                     direction="horizontal"
@@ -52,12 +52,14 @@ class Flipbook extends Component {
                         </div>
                     ))}
                 </FlippingPages>
+                <br></br>
                 {/* Buttons are required for keyboard navigation */}
-                <button
+                <button className={'flippingBtn'}
                     onClick={this.previous}
                     disabled={!this.state.selected}
                 >Previous</button>
                 <button
+                    className={'flippingBtn'}
                     onClick={this.next}
                     disabled={this.state.selected + 1 === this.totalPages}
                 >Next</button>
