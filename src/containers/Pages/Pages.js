@@ -139,9 +139,9 @@ class Pages extends Component {
                 }}
                 exact
                 >
-                <button className={'viewBookBtn'}>View Book</button>
+                <button className={'Btn'}>View Book</button>
                 </NavLink>
-                <button onClick={this.createPdf.bind(this)}>PDF it</button>
+                <button className={'Btn'} onClick={this.createPdf.bind(this)}>PDF it</button>
                 <div>
                     <h5 className={'pagesTitle'}>Pages</h5>
                     <div className={"Pages"}>

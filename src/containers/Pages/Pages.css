@@ -64,15 +64,18 @@ input{
     cursor: pointer;
 }
 
-.viewBookBtn{
+.Btn{
     border-radius: 4px;
     font-size: 1.5vw;
     text-align: center;
     border:none;
-    background-color: #275d64;
+    background-color: black;
     color: white;
     padding: 1%;
+    margin-right: 2%;
 }
+
+
 
 .pagesTitle{
     padding-top: 5%;

@@ -45,7 +45,7 @@
 }
 
 .LoginFormButton {
-  background-color: #00C4CC;
+  background-color: black;
   vertical-align: middle;
   font-size: 20px;
   color: white;
@@ -95,5 +95,6 @@
 }
 
 .LoginForm a {
-  color: #00C4CC;
+  color: black;
+  font-style: italic;
 }

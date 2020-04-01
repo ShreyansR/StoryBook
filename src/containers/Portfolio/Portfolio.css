@@ -61,19 +61,18 @@ hr {
 .removeBtn {
     cursor: pointer;
     position: relative;
-    transform: translate(-50%, -50%);
-    
+    transform: translate(-50%, -95%);
 }
 
 .storyItems{
-    padding: 1%;
+    padding: 3%;
 }
 
 
 .storyNameBtn {
     height: 30%;
     width: 60%; 
-    background-color:#275d64;;
+    background-color:black;
     color:white;
     font-size: larger;
     border-radius: 4px;
