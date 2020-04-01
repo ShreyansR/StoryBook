@@ -20,11 +20,12 @@
 }
 
 .SignupForm p {
-    color: #7A8888;
+    color: black;
 }
 
 .SignupForm a {
-    color: #00C4CC;
+    color: black;
+    font-style: italic;
 }
 
 
@@ -46,7 +47,7 @@
 }
 
 .SignupEmailButton {
-    background-color: #00C4CC;
+    background-color: black;
     color: white;
     cursor: pointer;
 }

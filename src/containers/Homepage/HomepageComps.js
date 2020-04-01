@@ -18,8 +18,8 @@ class WelcomeBanner extends React.Component{
     return(
       <div>
           <div className={"welcomeBanner"} id='welcomeBanner'>
-            <h1 className={"welcomeMessage1"}>Storybook, the only tool to capture your imagination</h1>
-            <h2 className= {"welcomeMessage2"}>Create and share your vitual story today!</h2>
+            <h1 className={"welcomeMessage1"}>Stori.io, the only tool to capture your imagination</h1>
+            <h2 className= {"welcomeMessage2"}>Create and share your virtual story today!</h2>
         </div>
       </div>
     ) 
