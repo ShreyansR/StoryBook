@@ -9,31 +9,43 @@
   /*Welcome Banner*/
   /*fade affect*/
   .welcomeBanner{
-    background-color: #55939b;
+    background-color: #F9FFFF;
     padding: 300px;
     transition: all 1s ease-out;
     text-align: center;
   }
   .welcomeBanner:hover{
-    background-color: #275d64;
+    background-color: #070B0C;
     color: white;
   }
   
   /* Prevew Section classes */
   .storyPreviewSection{
-    padding: 270px;
-    background-color:rgb(209, 164, 51);
-    text-align: left;
+    padding: 5%;
+    background-color: #83888B;
+    overflow: hidden;
+    text-align: center;
   }
 
-  .description{
-    text-align: right;
+  .previewGif{
+    height: 30%;
+    width: 30%;
+    float: left;
+    padding-right: 5%;
   }
+  
+  .discription{
+    overflow: hidden;
+    transform: translate(0%, 100%);
+  }
+
+  
 
   .createNowBtn{
     border-radius: 8px;
     font-size: 15px;
     padding: 10px;
+    margin-top: 1%;
     background-color:white;
     color:black;
   }
@@ -41,19 +53,33 @@
   
   /*Features Section*/
   .featuresSection{
-    padding: 270px;
-    background-color: #55939b;
+    padding: 10%;
+    background-color: #BAC2C4;
+    text-align: center;
   }
   
   .FAQSection{
     padding: 100px;
-    background-color:rgb(209, 164, 51)
+    background-color: #F9FFFF;
+    
   }
   
   .aboutUsSection{
-    padding: 270px;
-    background-color: #55939b;
+    background-color: #00979E;
+    padding: 10%;
   }
+
+  .content p{
+    font-size: 1.5vw;
+  }
+
+  .content{
+    width: 50%;
+    float: right;
+  }
+
+  
+
   
   /*image and text position on homepage*/
   .imageLeft{
@@ -64,10 +90,29 @@
     float: right;
   }
   
-  .textRight{
-    text-align:right;
-  }
   
-  .textLeft{
+  .qAndAs{
     text-align: left;
   }
+
+
+  .checkIcon {
+    height: 5%;
+    width: 5%;
+    float: left;
+    margin-right: 2%;
+  }
+
+  .benefits {
+    display: inline-block;
+    text-align: left;
+    margin-top: 2%;
+    width: 45%;
+  }
+
+  .logoblack {
+    height: 40%;
+    width: 40%;
+  }
+
+

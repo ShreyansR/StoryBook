@@ -2,6 +2,11 @@ import React from "react";
 import "./Homepage.css";
 import { NavLink } from 'react-router-dom';
 
+//import images
+import previewBook from '../../assests/images/preview-book.gif';
+import checkIcon from "../../assests/images/check-mark.webp";
+import logoblack from "../../assests/images/logoblack.png";
+
 // reactstrap components
 import {
   Button,
@@ -25,15 +30,14 @@ class StoryPreviewSection extends React.Component{
   render(){
     return(
       <div className={"storyPreviewSection"} id='storyPreviewSection'>
-        <div className={"imageLeft"}>
-          <h1>*Preview of Book*</h1>
+        <img src={previewBook} className={'previewGif'}></img>    
+
+        <div className={'discription'}>
+              <h2>create your story using our intuitive program and share it with your friends online</h2>
+              <NavLink to={'/Login'}><Button className={"createNowBtn"}> Create Story Now </Button></NavLink>  
         </div>
-        <div className={"description"}>
-          <h2>create your story using our intuitive program and share it with your friends online</h2>
-          <NavLink to={'/Login'}><Button className={"createNowBtn"}> Create Story Now </Button></NavLink>
-        </div>
-        
       </div>
+            
     )
   }
 }
@@ -43,13 +47,15 @@ class FeaturesSection extends React.Component{
     return(
       <div className={"featuresSection"} id='featuresSection'>
         
-        <div className={"textLeft"}>
-          <h2>Some Cool Features Include:</h2>
-          <h3>*Think of a proper format*</h3>
+        
+        <h1> What can you do with Stori.io?</h1>
+        <div className={"benefits"}>
+          <img src={checkIcon} className={'checkIcon'}></img> <h3> Customize the pages story</h3>
+          <img src={checkIcon} className={'checkIcon'}></img> <h3> Upload images </h3>
+          <img src={checkIcon} className={'checkIcon'}></img> <h3> Download story to PDF to share with firends</h3>
+          <img src={checkIcon} className={'checkIcon'}></img> <h3> View your story </h3>
         </div>
-        <div className={"imageRight"}>
-          <h1>*Another pic??*</h1>
-        </div>
+         
       </div>
     )
   }
@@ -63,7 +69,7 @@ class FAQSection extends React.Component{
         
         <h2>Frequently Asked Questions</h2>
         <br></br><br></br>
-        <div className={"textLeft"}>
+        <div className={"qAndAs"}>
           <i><h3> What is Storybook?</h3></i>
           <h4>Storybook helps you create and share your stories online without the hassles associated with creating a physical book</h4>
           <br></br><br></br>
@@ -88,14 +94,14 @@ class AboutUsSection extends React.Component{
   render(){
     return(
       <div className={"aboutUsSection"} id='aboutUsSection'>
-        
-        <div className={"textLeft"}>
+        <img className={'logoblack'} src={logoblack}></img> 
+        <div className={"content"}>
           <h2>About Us</h2>
-          <h3> *Some stuff about this thing I don't know what to write D:*</h3>
+          <p> The team at Stori.io have always enjoyed expressing themselves through writing but with the difficulties of publishing books they have struggled to share their own stories. </p>
+          <p> Therefore they have come together to create stori.io, an easy to use platform to create stories. </p>
+          <p> Start creating your story today!</p>
         </div>
-        <div className={"imageRight"}>
-          <h1>*Another pic??*</h1>
-        </div>
+          
       </div>
     )
   }
