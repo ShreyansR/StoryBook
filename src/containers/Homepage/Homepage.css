@@ -9,7 +9,7 @@
   /*Welcome Banner*/
   /*fade affect*/
   .welcomeBanner{
-    background-color: #F9FFFF;
+    background-color: #FFFFFF;
     padding: 300px;
     transition: all 1s ease-out;
     text-align: center;
@@ -23,7 +23,7 @@
   .storyPreviewSection{
     padding: 5%;
     background-color: #070B0C;
-    color: #F9FFFF;
+    color: #FFFFFF;
     overflow: hidden;
     text-align: center;
   }
@@ -55,7 +55,7 @@
   /*Features Section*/
   .featuresSection{
     padding: 10%;
-    background-color: #F9FFFF;
+    background-color: #FFFFFF;
     text-align: center;
     
   }
@@ -63,7 +63,7 @@
   .FAQSection{
     padding: 100px;
     background-color: #070B0C;
-    color: #F9FFFF
+    color: #FFFFFF
   }
   
   .aboutUsSection{
