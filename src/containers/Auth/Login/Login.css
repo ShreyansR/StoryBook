@@ -1,18 +1,22 @@
 .LoginContainer {
-  background-color: transparent;
+  background-color: white;
   padding-top: 40px;
   padding-left: 80px;
-  width: 344px;
-  margin: 3%;
+  padding-bottom: 40px;
+  padding-right: 80px;
+  width: 50%;
   font-family: SegoeUI, Segoe UI;
+  text-align: center; 
+  margin: auto;
 }
 
 
 .LoginForm h3 {
   width: 100%;
-  font-size: 30px;
-  font-family: SegoeUI-Semibold, Segoe UI;
-  font-weight: 600;
+    font-size: 45px;
+    font-family: SegoeUI-Semibold, Segoe UI;
+    font-weight: 600;
+    margin: 0;
 }
 
 .LoginGoogleButton {

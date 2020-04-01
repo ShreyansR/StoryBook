@@ -59,6 +59,7 @@ class Login extends Component {
         <div className={"LoginContainer"}>
           <div className={"LoginForm"}>
             <h3>Log in to your account</h3>
+            <br></br>
             <button onClick={() => {this.authWithGoogle()}} className={"LoginGoogleButton"}>
               <span>
                 <span className={"GoogleLoginLogo"}>
@@ -95,7 +96,7 @@ class Login extends Component {
                 </span>
               </button>
             </form>
-
+            <br></br>
             <p>
               Don't have an account?
               <span> </span>

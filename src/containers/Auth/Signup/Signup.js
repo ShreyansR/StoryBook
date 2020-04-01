@@ -64,6 +64,7 @@ class Signup extends Component {
             <p>
                 Create an account and tell everyone for free.
             </p>
+            <br></br>
             <button onClick={() => {this.signupWithGoogle()}}className={"SignupGoogleButton"}>
               <span>
                 <span className={"GoogleSignupLogo"}>
@@ -106,6 +107,7 @@ class Signup extends Component {
                     </span>
                 </button>
             </form>
+            <br></br>
             <p>
               Already have an account?
               <span> </span>

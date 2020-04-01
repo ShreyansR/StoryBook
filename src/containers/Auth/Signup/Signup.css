@@ -1,10 +1,13 @@
 .SignupContainer {
-    background-color: transparent;
-    padding-top: 40px;
-    padding-left: 80px;
-    width: 344px;
-    margin: 3%;
-    font-family: SegoeUI, Segoe UI;
+    background-color: white;
+  padding-top: 40px;
+  padding-left: 80px;
+  padding-bottom: 40px;
+  padding-right: 80px;
+  width: 50%;
+  font-family: SegoeUI, Segoe UI;
+  text-align: center; 
+  margin: auto;
 }
 
 
