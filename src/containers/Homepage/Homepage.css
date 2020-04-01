@@ -22,7 +22,8 @@
   /* Prevew Section classes */
   .storyPreviewSection{
     padding: 5%;
-    background-color: #83888B;
+    background-color: #070B0C;
+    color: #F9FFFF;
     overflow: hidden;
     text-align: center;
   }
@@ -54,19 +55,21 @@
   /*Features Section*/
   .featuresSection{
     padding: 10%;
-    background-color: #BAC2C4;
+    background-color: #F9FFFF;
     text-align: center;
+    
   }
   
   .FAQSection{
     padding: 100px;
-    background-color: #F9FFFF;
-    
+    background-color: #070B0C;
+    color: #F9FFFF
   }
   
   .aboutUsSection{
-    background-color: #00979E;
+    background-color: white;
     padding: 10%;
+    color: #070B0C;
   }
 
   .content p{
