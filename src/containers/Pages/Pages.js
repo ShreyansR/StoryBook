@@ -82,33 +82,27 @@ class Pages extends Component {
         })
     }
 
-    updateStoryName(event){
-        this.setState({
-            tempStory: event.target.value
-        })
-    }
 
-    mySubmitHandler(event){
+    handleChange = (event) => {
         event.preventDefault();
-        //submit the changed name to firestore
-        fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(this.state.sId).update({
-            "storyName": this.state.tempStory
-        }).then(result => {
-            window.location.reload(false);
+        console.log(event.target.value)
+        this.setState({
+            story: event.target.value
+        }, () => {
+            console.log("_____",this.story)
+            fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(this.state.sId).update({
+                "storyName": this.state.story
+            });
         });
     }
     
     render() {
         return (
             <div className={"PagesContainer"}>
-                <h3>{this.state.story}</h3>
-                <form onSubmit={this.mySubmitHandler.bind(this)}>
-                    <label>
-                        Story Name:
-                        <input type="text" onChange={this.updateStoryName.bind(this)}/>
-                    </label>
-                    <input type="submit" value="Change Name"/>
+                <form>
+                    <input className={'inputField'} type='text' onChange={this.handleChange} value={this.state.story}></input>
                 </form>
+                <br></br>
                 <NavLink to = {{
                     pathname:"/Flipbook",
                     state:{
@@ -117,9 +111,10 @@ class Pages extends Component {
                 }}
                 exact
                 >
-                <button>View Book</button>
+                <button className={'viewBookBtn'}>View Book</button>
                 </NavLink>
                 <div>
+                    <br></br><br></br>
                     <h5>Pages</h5>
                     <div className={"Pages"}>
                     {this.state.urls.map(image => (
