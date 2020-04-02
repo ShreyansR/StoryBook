@@ -70,12 +70,12 @@ class FAQSection extends React.Component{
         <h2>Frequently Asked Questions</h2>
         <br></br><br></br>
         <div className={"qAndAs"}>
-          <i><h3> What is Storybook?</h3></i>
-          <h4>Storybook helps you create and share your stories online without the hassles associated with creating a physical book</h4>
+          <i><h3> What is Stori.io?</h3></i>
+          <h4>Stori.io helps you create and share your stories online without the hassles associated with creating a physical book</h4>
           <br></br><br></br>
 
           <i><h3> How much does this cost?</h3></i>
-          <h4>Storybook is FREE! No strings attached</h4>
+          <h4>Stori.io is FREE! No strings attached</h4>
           <br></br><br></br>
 
           <i><h3> How can I share my stories?</h3></i>
