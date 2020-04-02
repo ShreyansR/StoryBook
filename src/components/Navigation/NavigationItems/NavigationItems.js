@@ -10,10 +10,9 @@ import { NavLink } from 'react-router-dom';
 const navigationItems = ( props ) => (
     
     <ul className={"NavigationItems"}> 
-        {console.log("NAV: " + props.auth)}
         {props.auth ? 
             (<ul className={"NavigationItems"}> 
-                <h1 style={{textAlign:"center"}}>{fireB.auth().currentUser.displayName}</h1>
+                <h1 style={{textAlign:"center"}}>{fireB.auth().currentUser.displayName} ({fireB.auth().currentUser.emailVerified ? "Verified" : "Unverified"})</h1>
                 <img title={fireB.auth().currentUser.displayName} src={fireB.auth().currentUser.photoURL}></img>
                 <NavLink to={'/' }onClick={()=>fireB.auth().signOut()}>Sign Out</NavLink>
 

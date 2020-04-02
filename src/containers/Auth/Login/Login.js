@@ -22,11 +22,11 @@ class Login extends Component {
     fireB.auth().signInWithPopup(googleProvider)
       .then((result, error) => {
         if (error) {
-          alert("Incorrect Credentials");
+          //console.log(error);
         }
         else {
           this.setState({redirect: true});
-          console.log("The current ID: " + fireB.auth().currentUser.uid)
+          //console.log("The current ID: " + fireB.auth().currentUser.uid)
           //check if the user has an entry in the firestore portfolio database
           const usersRef = fstore.collection("Users").doc(fireB.auth().currentUser.uid)
           usersRef.get().then((docSnapshot) => {
@@ -46,7 +46,20 @@ class Login extends Component {
 
   authWithEmailPassword(event) {
     event.preventDefault();
-    fireB.auth().signInWithEmailAndPassword(this.emailInput.value, this.passwordInput.value);
+    fireB.auth().signInWithEmailAndPassword(this.emailInput.value, this.passwordInput.value)
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if(errorCode === 'auth/wrong-password') {
+          alert("Incorrect Email/Password");
+        }
+        else if (errorCode === 'auth/user-not-found'){
+          alert("User does not exist")
+        }
+      })
+      .then(() => {
+        this.setState({redirect: true});
+      })
   }
 
   render() {

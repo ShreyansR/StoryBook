@@ -22,8 +22,8 @@ class Portfolio extends Component {
 
     componentWillMount() {
         this.getStories().then(result => {
-            console.log("this is the result from the getStories promise: " + this.state.stories);
-            console.log(this.state.stories);
+            //console.log("this is the result from the getStories promise: " + this.state.stories);
+            //console.log(this.state.stories);
             this.setState({
                 gatheredThumbnails: true
             })

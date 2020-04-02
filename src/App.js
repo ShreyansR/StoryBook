@@ -52,7 +52,7 @@ class App extends Component {
   componentWillMount() {
     this.removeAuthListener = fireB.auth().onAuthStateChanged((user) => {
       if(user) {
-        console.log(this.state.isSignedIn);
+        //console.log(this.state.isSignedIn);
         this.setState({
           isSignedIn: true,
           currentUser: user,
@@ -60,7 +60,7 @@ class App extends Component {
         });
       }
       else {
-        console.log(this.state);
+        //console.log(this.state);
         this.setState({
           isSignedIn: false,
           currentUser: null,
@@ -80,7 +80,7 @@ class App extends Component {
 
   authListener() {
     fireB.auth().onAuthStateChanged((user) => {
-      console.log(user);
+      //console.log(user);
       if (user) {
         this.setState({isSignedIn: true});
       }

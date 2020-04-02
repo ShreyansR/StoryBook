@@ -113,11 +113,11 @@ class Pages extends Component {
 
     handleChange = (event) => {
         event.preventDefault();
-        console.log(event.target.value)
+        //console.log(event.target.value)
         this.setState({
             story: event.target.value
         }, () => {
-            console.log("_____",this.story)
+            //console.log("_____",this.story)
             fstore.collection("Users").doc(fireB.auth().currentUser.uid).collection("Stories").doc(this.state.sId).update({
                 "storyName": this.state.story
             });

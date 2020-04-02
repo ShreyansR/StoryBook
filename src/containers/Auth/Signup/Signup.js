@@ -34,20 +34,30 @@ class Signup extends Component {
 
     signupWithEmailPassword(event) {
         event.preventDefault();
-
+        //var user = null;
         fireB.auth().createUserWithEmailAndPassword(this.emailInput.value, this.passwordInput.value)
-            .then((user) => {
-                if (user) {
-                    user.updateProfile({
-                      displayName: this.nameInput.value
-                    }).then (() => {
-                      console.log(user.displayName);
-                    })
-                }
-                else {
-                    this.setState({redirect: true});
-                }
-            });
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if(error){
+            alert(errorMessage);
+          }
+        })
+        .then(() => {
+          //user = fireB.auth().currentUser;
+          if(fireB.auth().currentUser){
+            fireB.auth().currentUser.updateProfile({
+              displayName: this.nameInput.value,
+              photoURL: "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+            }).then (() => {
+              this.setState({redirect: true});
+            })
+            fireB.auth().currentUser.sendEmailVerification();
+            this.setState({redirect: true});
+          }
+          
+
+        });
     }
 
   render() {
