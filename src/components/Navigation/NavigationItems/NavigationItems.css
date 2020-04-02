@@ -35,12 +35,12 @@
 }
 
 .NavigationItems a:hover {
-    border-bottom: 2px solid #00C4CC;
+    border-bottom: 2px solid #2ad8ff;
 }
 
 .NavigationItems a:active,
 .NavigationItems a.active {
-    background-color: #00C4CC;
+    background-color: #2ad8ff;
     color: white;
 }
 

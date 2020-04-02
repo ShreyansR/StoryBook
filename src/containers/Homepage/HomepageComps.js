@@ -33,7 +33,7 @@ class StoryPreviewSection extends React.Component{
         <img src={previewBook} className={'previewGif'}></img>    
 
         <div className={'discription'}>
-              <h2>create your story using our intuitive program and share it with your friends online</h2>
+              <h2>Create your story using our intuitive program and share it with your friends online</h2>
               <NavLink to={'/Login'}><Button className={"createNowBtn"}> Create Story Now </Button></NavLink>  
         </div>
       </div>
