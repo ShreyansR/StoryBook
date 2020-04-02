@@ -9,7 +9,7 @@ class Flipbook extends Component {
 
     constructor(props) {
         super(props)
-        this.totalPages = 4
+        this.totalPages = this.props.location.state.urls.length
         this.state = {
             selected: 0,
         }
