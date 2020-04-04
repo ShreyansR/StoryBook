@@ -1,8 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Stori.io](https://storybookcc.herokuapp.com/): Create and share storybooks
 
-## Available Scripts
+After cloning the repo, in the project directory, you can run:
 
-In the project directory, you can run:
+### `npm install`
+
+Installs all node modules required by the app in the package.json file.<br />
+This step must be repeated everytime a new module is added to the package.
 
 ### `npm start`
 
@@ -12,57 +15,36 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+### `Deploy on Cloud`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
+Heroku was chosen to deploy this application to the cloud. This can be done by linking the github repo to an heroku app and automatically deploy a branch of the repo.
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Testing the website
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The website can be visited by clicking here: [Stori.io](https://storybookcc.herokuapp.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### `Sign up`
 
-## Learn More
+Once the website is loaded, sign up on the sign up page using either a Google Account or Email/Password. You will automatically be logged in after you sign up. If you chose to Sign up using Email/Password you will need to verify your email from the link sent to the provided email. A refresh of the page may also be need to correctly load the username and picture on the nav bar on top.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `Login`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Once you create an account, you can login at any time using your credentials.
 
-### Code Splitting
+### `Create/Edit a story`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Once logged in, you will be able to create a new story or edit an existing one on the dashboard page.
 
-### Analyzing the Bundle Size
+### `Add/Edit Pages`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Once a story is added or selected to be edited, you will be redirected to the "Pages" page where you will be able to add more pages or edit existing pages to your story.
 
-### Making a Progressive Web App
+### `View/Download Storybook`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Once you are satisfied with your storybook, you can view it in an interactive book format or download a pdf of the book.
 
-### Advanced Configuration
+### `Delete Stories/Pages`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+You can go back to either pages to delete the existing stories or pages.
