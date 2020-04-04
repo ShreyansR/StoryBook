@@ -19,7 +19,7 @@ You will also see any lint errors in the console.
 
 Heroku was chosen to deploy this application to the cloud. This can be done by linking the github repo to an heroku app and automatically deploy a branch of the repo.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Note: Heroku puts the app on sleep by default if the application has had no traffic for over an hour. If you go to the website the first time an Application Error might occur due to the application being on sleep. But that will trigger the wake up call for the website and it should run after refreshing in a few minutes.**
 
 # Testing the website
 
